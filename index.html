@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Hangman</title>
+    <script type="text/javascript" src="game.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</head>
+<body>
+    <h1 id="title">Hangman</h1>
+    <div id="secret_word_div">
+        <h1 id="secret_word"></h1>
+    </div>
+    <div class="">
+        <div class="row">
+            <div class="col-xl-6" id="hangman_div">
+                <img id="hangman_picture" src="pictures/hangman0.jpg" alt="hangman">
+                <p id="time"></p>
+            </div>
+            <div class="col-sm-6" id="keyboard">
+                <div id="keyboard_container">
+                    <h1 onclick="start_game()" id="start">Start</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+		
+</body>
+</html>
