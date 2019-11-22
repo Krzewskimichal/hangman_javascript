@@ -1,9 +1,13 @@
-var words = new Array("flower", "bannana", "bow", "circus", "desk", "home", "grandfather",
-"fenomenal", "sun", "star", "pickle", "orange", "mountain", "harvest", "scorpion", "sword", "rain")
-
 // random word from words array
-var word = words[Math.floor((Math.random() * words.length) + 1)];
-word = word.toUpperCase();
+function random_word(){
+	var words = new Array("flower", "hand", "bow", "duck", "desk", "home", "water",
+	"mouse", "sun", "star", "pickle", "orange", "jacket", "harvest", "dog", "cat", "sword", "rain")
+
+	
+	var word = words[Math.floor((Math.random() * words.length) + 1)];
+	word = word.toUpperCase();
+	return word;
+}
 
 // add method to replace char in string by position
 String.prototype.replaceAt=function(index, replacement) {
@@ -11,12 +15,18 @@ String.prototype.replaceAt=function(index, replacement) {
 }
 
 //variable not_win changes value for 0 when player wins 
-var win = word.length;
+var win = 0;
 
-// counter for pictures
+// counter for pictures, if 9, player lose
 var picture_counter = 0;
 
 function start_game() {
+	
+	win = 0;
+	picture_counter = 0;
+
+	word = random_word();
+	
 	//set picture
 	document.getElementById("hangman_picture").src = "pictures/hangman0.jpg";
 
@@ -81,15 +91,17 @@ function check_letter() {
 				if(word.charAt(j)==letter.id)
 				{
 					var res = secret_word.replaceAt(j, letter.id);
+					document.getElementById("secret_word").innerHTML = res;
 				}
 			}
-			
-			document.getElementById("secret_word").innerHTML = res;
 
 			//check if win == 0 player wins
-			win--;
-			
-			if(win==0)win_function();
+			win++;
+
+			if(win==word.length){
+				win_function();
+				return;
+			}
 			return;
 		}
 		else
@@ -97,6 +109,8 @@ function check_letter() {
 			document.getElementById(letter.id).style.borderColor = "red";
 			document.getElementById(letter.id).style.color = "red";
 			document.getElementById(letter.id).style.cursor = "default";
+
+			document.getElementById(letter.id).onclick = "";
 		}
 	}
 
@@ -108,7 +122,6 @@ function check_letter() {
 	{	
 		document.getElementById("keyboard_container").innerHTML = "<h1>GAME OVER</h1><p onclick="+"start_game()"+">Again?<p>";
 		picture_counter = 0;
-		
 	}
 }
 
